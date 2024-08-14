@@ -13,10 +13,6 @@ export const actions = {
             data.password,
         );
 
-        console.log(locals.pb.authStore.isValid);
-        console.log(locals.pb.authStore.token);
-        console.log(locals.pb.authStore.model.id);
-
         throw redirect(303, `/${authData.record.id}`)
     }
 }

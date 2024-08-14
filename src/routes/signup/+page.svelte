@@ -12,7 +12,7 @@
         </h1>
 
         <form action="?/register" method="POST" class="flex flex-col justify-center w-full gap-4">
-            <Input class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl border-none text-black placeholder:text-black drop-shadow-md" placeholder="Full Name" name="name" type="text"/>
+            <Input class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl border-none text-black placeholder:text-black drop-shadow-md" placeholder="Full Name" name="full_name" type="text"/>
             <Input class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl border-none text-black placeholder:text-black drop-shadow-md" placeholder="E-Mail" name="email" type="email"/>
             <Input class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl border-none text-black placeholder:text-black drop-shadow-md" placeholder="Password" name="password" type="password"/>
             <Input class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl border-none text-black placeholder:text-black drop-shadow-md" placeholder="Password Confirm" name="passwordConfirm" type="password"/>

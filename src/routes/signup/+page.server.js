@@ -13,34 +13,20 @@ export const actions = {
             "emailVisibility": true,
             "password": data.password,
             "passwordConfirm": data.passwordConfirm,
-            "name": data.name,
+            "full_name": data.full_name,
+            "admin": false
         };
         
         const record = await locals.pb.collection('users').create(user);
         
         await locals.pb.collection('users').requestVerification(data.email);
 
+        const authData = await locals.pb.collection('users').authWithPassword(
+            data.email,
+            data.password,
+        );
+
         throw redirect(303, `/${record.id}/verify`)        
 
     },
-
-    registerLegacy: async ({ locals, request }) => {
-
-        const data = Object.fromEntries(await request.formData());
-
-        const newAvlanaUser = {
-            "name": data.name,
-            "email": data.email,
-            "emailVisibility": true,
-            "password": data.password,
-            "passwordConfirm": data.passwordConfirm
-        };
-
-        const newAvlanaUserRecord = await locals.pb.collection('users').create(newAvlanaUser);
-        await locals.pb.collection('users').requestVerification(`${data.email}`);
-        console.log(newAvlanaUserRecord)
-        
-
-        throw redirect(303, `/${newAvlanaUserRecord.id}/verify`)
-    }
 }

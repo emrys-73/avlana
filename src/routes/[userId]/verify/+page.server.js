@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 
+import { redirect } from '@sveltejs/kit';
+import { verify } from 'crypto';
+
 export const load = async ({ locals, params }) => {
     const getUser = async () => {
 
@@ -14,3 +17,13 @@ export const load = async ({ locals, params }) => {
     }
 }
 
+export const actions = {
+    verify: async ({ locals, request, params }) => {
+
+        if(locals.pb.authStore.isValid){
+            throw redirect(303, `/${params.userId}`)
+        }
+
+        throw redirect(303, `/${params.userId}/verify`)
+    },
+}

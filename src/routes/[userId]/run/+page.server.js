@@ -14,8 +14,8 @@ export const load = async ({ locals, params }) => {
         function page(records, fetchNextPage) {
             records.forEach(function(record) {
                 
-                console.log('Scene name:', record.get('Name'));
-                console.log('Description:', record.get('Description'));
+                // console.log('Scene name:', record.get('Name'));
+                // console.log('Description:', record.get('Description'));
             })}
     )
     

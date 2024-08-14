@@ -1,14 +1,12 @@
 <script>
     import { Input } from "$lib/components/ui/input"
 
-
     export let data;
-
 </script>
 
 <div class="w-full h-full min-h-screen flex flex-col justify-center items-center gap-6">
     <h1 class="text-white text-3xl font-semibold w-1/2 text-center">
-        Great {data?.user?.name}, now let's start processing some footage
+        Great {data?.user?.full_name.split(' ')[0]}, now let's start processing some footage
     </h1>
 
     <form action="?/run" method="POST" class="w-1/2 flex flex-col gap-6 justify-center">

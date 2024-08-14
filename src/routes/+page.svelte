@@ -10,7 +10,7 @@
             Welcome to Avlana
         </h1>
 
-        <div class="w-full flex flex-row justify-center">
+        <div class="w-1/2 flex flex-row justify-center">
             <Button href="/signup" class="w-3/4 px-6 py-2 flex justify-center items-center flex-row bg-[#CE1B4A] rounded-xl hover:bg-[#D72655] transition-all duration-300 ease-in-out drop-shadow-lg">
                 <span class="text-white font-semibold">
                     Start here
