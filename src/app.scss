@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --main-color: #D72655;
+    --secondary-color: #F2C798;
+    --white-color: #F1F1F1;
+    --black-color: #0A0A0A;
+
+    --background: #ffffff;
+    --foreground: #0A0A0A;
+
+    --muted: #f2f2f2;
+    --muted-foreground: #767676;
+
+    --popover: #ffffff;
+    --popover-foreground: #0A0A0A;
+
+    --card: #ffffff;
+    --card-foreground: #0A0A0A;
+
+    --border: #e5e5e5;
+    --input: #e5e5e5;
+
+    --primary: #1a1a1a;
+    --primary-foreground: #fafafa;
+
+    --secondary: #f2f2f2;
+    --secondary-foreground: #1a1a1a;
+
+    --accent: #f2f2f2;
+    --accent-foreground: #1a1a1a;
+
+    --destructive: #d93634;
+    --destructive-foreground: #fafafa;
+
+    --ring: #0A0A0A;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #0A0A0A;
+    --foreground: #fafafa;
+
+    --muted: #262626;
+    --muted-foreground: #a5a5a5;
+
+    --popover: #0A0A0A;
+    --popover-foreground: #fafafa;
+
+    --card: #0A0A0A;
+    --card-foreground: #fafafa;
+
+    --border: #262626;
+    --input: #262626;
+
+    --primary: #fafafa;
+    --primary-foreground: #1a1a1a;
+
+    --secondary: #262626;
+    --secondary-foreground: #fafafa;
+
+    --accent: #262626;
+    --accent-foreground: #fafafa;
+
+    --destructive: #9e2620;
+    --destructive-foreground: #fafafa;
+
+    --ring: #3b3b3b;
+
+    /* Gradient */
+    --color-bg1: #6c00a2;
+    --color-bg2: #001152;
+    --color1: #1271ff;
+    --color2: #dd4aff;
+    --color3: #64dcff;
+    --color4: #c83232;
+    --color5: #b4b432;
+    --color-interactive: #8c64ff;
+    --circle-size: 80%;
+    --blending: hard-light;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.text-container {
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 96px;
+  color: #000000;
+  opacity: 0.8;
+  user-select: none;
+  text-shadow: 1px 1px #1a1a1a1a;
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+.gradient-bg {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(40deg, #DA2A57, #F0C396);
+  top: 0;
+  left: 0;
+
+  svg {
+    display: none;
+  }
+
+  .gradients-container {
+    filter: url(#goo) blur(80px);
+    width: 100%;
+    height: 100%;
+  }
+
+  .g1 {
+    position: absolute;
+    background: radial-gradient(circle at center, #DA2A57 0, #F0C396 50%) no-repeat;
+    mix-blend-mode: hard-light;
+
+    width: 40%;
+    height: 40%;
+    top: 10%;
+    left: 10%;
+
+    transform-origin: center center;
+    animation: moveVertical 30s ease infinite;
+
+    opacity: 1;
+  }
+
+  .g2 {
+    position: absolute;
+    background: radial-gradient(circle at center, #DA2A57 , #F0C396 50%) no-repeat;
+    mix-blend-mode: hard-light;
+
+    width: 80%;
+    height: 80%;
+    top: calc(50% - 40%);
+    left: calc(50% - 40%);
+
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 20s reverse infinite;
+
+    opacity: 1;
+  }
+
+  .g3 {
+    position: absolute;
+    background: radial-gradient(circle at center, #F0C396 0, #DA2A57 50%) no-repeat;
+    mix-blend-mode: hard-light;
+
+    width: 80%;
+    height: 80%;
+    top: calc(50% - 40% + 200px);
+    left: calc(50% - 40% - 500px);
+
+    transform-origin: calc(50% + 400px);
+    animation: moveInCircle 40s linear infinite;
+
+    opacity: 1;
+  }
+
+  .g4 {
+    position: absolute;
+    background: radial-gradient(circle at center, #AC1039 0, #F0C396 50%) no-repeat;
+    mix-blend-mode: hard-light;
+
+    width: 80%;
+    height: 80%;
+    top: calc(50% - 40%);
+    left: calc(50% - 40%);
+
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+
+    opacity: 0.4;
+  }
+
+  .g5 {
+    position: absolute;
+    background: radial-gradient(circle at center, #DA2A57 0, #F0C396 50%) no-repeat;
+    mix-blend-mode: hard-light;
+
+    width: 160%;
+    height: 160%;
+    top: calc(50% - 80%);
+    left: calc(50% - 80%);
+
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+
+    opacity: 1;
+  }
+
+  .interactive {
+    position: absolute;
+    background: radial-gradient(circle at center, #DA2A57 0, #DA2A57 50%) no-repeat;
+    mix-blend-mode: hard-light;
+
+    width: 15%;
+    height: 30%;
+    
+    
+
+    opacity: 0.9;
+  }
+}
