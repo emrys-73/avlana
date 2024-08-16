@@ -1,10 +1,10 @@
-import { AttachmentColumn, NumberColumn, StringArrayColumn, StringColumn, type Attachment, type LinkedRecord } from "./airtableSchema";
+import { AttachmentColumn, NumberColumn, StringArrayColumn, StringColumn, type Attachment } from "./airtableSchema";
 import { AirtableTable } from "./airtableTable";
 
 export type SceneRecord = {
   id: string;
   name: string;
-  file: LinkedRecord;
+  fileId: string;
   keyFrames: Attachment[],
   sceneNumber: number,
   startFrame: number;
@@ -28,10 +28,10 @@ export type SceneRecord = {
 }
 
 export default class AirtableSceneTable extends AirtableTable<SceneRecord> {
-  protected tableName = 'Projects';
+  protected tableName = 'Scenes';
   protected columns = [
     new StringColumn<SceneRecord>("Name", "name"),
-    new StringColumn<SceneRecord>("File", "file"),
+    new StringColumn<SceneRecord>("File", "fileId"),
     new AttachmentColumn<SceneRecord>("Key Frames", "keyFrames"),
     new NumberColumn<SceneRecord>("Scene Number", "sceneNumber"),
     new NumberColumn<SceneRecord>("Start Frame", "startFrame"),

@@ -1,20 +1,20 @@
-import { StringArrayColumn, StringColumn, type LinkedRecord } from "./airtableSchema";
+import { StringArrayColumn, StringColumn } from "./airtableSchema";
 import { AirtableTable } from "./airtableTable";
 
 export type SegmentRecord = {
   id: string;
   name: string;
   notes: string;
-  project: LinkedRecord;
-  files?: LinkedRecord[];
+  projectId: string;
+  fileIds?: string[];
 }
 
 export default class AirtableSegmentsTable extends AirtableTable<SegmentRecord> {
-  protected tableName = 'Projects';
+  protected tableName = 'Segments';
   protected columns = [
     new StringColumn<SegmentRecord>("Name", "name"),
     new StringColumn<SegmentRecord>("Notes", "notes"),
-    new StringColumn<SegmentRecord>("Project", "project"),
-    new StringArrayColumn<SegmentRecord>("Files", "files", true),
+    new StringColumn<SegmentRecord>("Project", "projectId"),
+    new StringArrayColumn<SegmentRecord>("Files", "fileIds", true),
   ]
 }

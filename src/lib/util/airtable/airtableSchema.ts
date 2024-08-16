@@ -6,11 +6,6 @@ export type Attachment = {
 	filename?: string;
 };
 
-export type LinkedRecord = {
-	id: string;
-	name?: string;
-};
-
 export abstract class AirtableColumnSchema<DTOType, AirtableDataType, DTODataType> {
 	public readonly columnName: string;
 	public readonly fieldName: keyof DTOType;

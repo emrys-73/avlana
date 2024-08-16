@@ -1,4 +1,4 @@
-import { AttachmentColumn, NumberColumn, StringArrayColumn, StringColumn, type Attachment, type LinkedRecord } from "./airtableSchema";
+import { AttachmentColumn, NumberColumn, StringArrayColumn, StringColumn, type Attachment } from "./airtableSchema";
 import { AirtableTable } from "./airtableTable";
 
 export type ProjectRecord = {
@@ -10,7 +10,7 @@ export type ProjectRecord = {
   contextDocuments: Attachment[];
   createdAt?: string;
   fileCount?: number;
-  segments?: LinkedRecord[];
+  segmentIds?: string[];
 }
 
 export default class AirtableProjectsTable extends AirtableTable<ProjectRecord> {
@@ -21,9 +21,8 @@ export default class AirtableProjectsTable extends AirtableTable<ProjectRecord> 
     new StringColumn<ProjectRecord>("User", "user"),
     new StringColumn<ProjectRecord>("Status", "status"),
     new AttachmentColumn<ProjectRecord>("Context Documents", "contextDocuments"),
-    new StringColumn<ProjectRecord>("Context Documents", "contextDocuments"),
     new StringColumn<ProjectRecord>("Created At", "createdAt", true),
     new NumberColumn<ProjectRecord>("File Count", "fileCount", true),
-    new StringArrayColumn<ProjectRecord>("Segments", "segments", true),
+    new StringArrayColumn<ProjectRecord>("Segments", "segmentIds", true),
   ]
 }
