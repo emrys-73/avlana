@@ -39,6 +39,17 @@ export class StringArrayColumn<DTOType> extends AirtableColumnSchema<DTOType, st
 	}
 }
 
+export class DateColumn<DTOType> extends AirtableColumnSchema<DTOType, string, Date | null> {
+	public toRecord(value: Date | null) {
+		return value?.toISOString() ?? '';
+	}
+	public fromRecord(value: string) {
+		return value
+			? new Date(value)
+			: null;
+	}
+}
+
 export class NumberColumn<DTOType> extends AirtableColumnSchema<DTOType, number, number> {
 	public toRecord(value: number) {
 		return value;
@@ -75,5 +86,18 @@ export class AttachmentColumn<DTOType> extends AirtableColumnSchema<
 	}
 	public fromRecord(value: Airtable.Attachment[]) {
 		return (value as Attachment[]) ?? [];
+	}
+}
+
+export class JSONColumn<DTOType> extends AirtableColumnSchema<
+	DTOType,
+	string,
+	object
+> {
+	public toRecord(value: object): string {
+		return JSON.stringify(value ?? {});
+	}
+	public fromRecord(value: string): object {
+		return JSON.parse(value) ?? {};
 	}
 }
